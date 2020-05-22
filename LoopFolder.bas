@@ -16,6 +16,9 @@ With Application.FileDialog(msoFileDialogFolderPicker)
     
 End With
 
+    Sheet1.Cells.ClearContents
+    Call RecursiveDir(Directory)
+
 End Sub
 
 Sub RecursiveDir(ByVal CurrDir As String)
@@ -24,6 +27,7 @@ Dim Dirs() As String
 Dim NumDirs As Long
 Dim Filename As String
 Dim PathAndName As String
+Dim i As Long
 Dim Filesize As Double
 
 'Put column headings on active sheet
@@ -72,5 +76,10 @@ Do While Len(Filename) <> 0
     
 Filename = Dir()
 Loop
+    
+'Process the found directories recursively
+For i = 0 To NumDirs - 1
+    RecursiveDir Dirs(i)
+Next i
     
 End Sub
