@@ -18,29 +18,29 @@ Loop through each file in a folder/subfolder recursively to get information insi
 ### Outlook and SAP Control
 ----------
 
-Send an email containing [FB03 SAP Tcode](http://www.saptransactions.com/codes/FB03/) (Company Code, Fiscal Year, Document Number) to another account (usually to a PC can run SAP). Then open SAP and auto-input those strings in order to download hard copies. Finally, zip and reply to the receipt email.
+Send an email containing [FB03 SAP Tcode](http://www.saptransactions.com/codes/FB03/) information (Company Code, Fiscal Year, Document Number) to another account (usually to a PC can run SAP). Then open SAP and auto-input those strings in order to download hard copies. Finally, zip and reply to the receipt email.
 
 **Modules**: [OutlookControl.bas](https://github.com/ngtridung97/Vba/blob/master/OutlookControl.bas), [SAPControl.bas](https://github.com/ngtridung97/Vba/blob/master/SAPControl.bas), [ZipFiles.bas](https://github.com/ngtridung97/Vba/blob/master/ZipFiles.bas)
 
-### ADOdb Query
-----------
-Communication between Excel and Database via ```ADOdb``` connection.
-
-**Modules**: [EventMenu.bas](https://github.com/ngtridung97/Vba/blob/master/EventMenu.bas), [ReduceSize.bas](https://github.com/ngtridung97/Vba/blob/master/ReduceSize.bas)
-
 ### Drag and Drop .eml file
 ----------
-List email information and Move/Copy them to another directory by ```Treeview Nodes``` in Userform. Please tick all below References and show Userform before using modules.
+List email information and Move/Copy them to another directory by ```Treeview Nodes``` in Userform.
+
+Please tick all below References and show Userform before using modules.
 
 ![](https://github.com/ngtridung97/Vba/blob/master/Reference/Ref.png?raw=true)
 
 **Modules**: [FileArrangement.bas](https://github.com/ngtridung97/Vba/blob/master/FileArrangement.bas), [EmailRetrieve.bas](https://github.com/ngtridung97/Vba/blob/master/EmailRetrieve.bas), [DragDrop.frm](https://github.com/ngtridung97/Vba/blob/master/DragDrop.frm)
 
-### Update modified data to server
+### Update data to server ADODB
 ----------
-Loop through each row in selected range (visible cells only), push update to server, pull the newest table back and restore filters.
+Communication between Excel and Database via ```ADOdb``` connection. Loop through each row in selected range (visible cells only), push update to server, pull the newest table back and restore filters.
 
-**Modules**:
+Please add "Microsoft ActiveX Data Objects 6.1 Library" to apply ADODB early binding.
+
+![](https://github.com/ngtridung97/Vba/blob/master/Reference/Ref.png?raw=true)
+
+**Modules**: [EventMenu.bas](https://github.com/ngtridung97/Vba/blob/master/EventMenu.bas), [ReduceSize.bas](https://github.com/ngtridung97/Vba/blob/master/ReduceSize.bas), [ADODB.bas](https://github.com/ngtridung97/Vba/blob/master/ADODB.bas)
 
 ### Fill in the blank cells
 ----------
