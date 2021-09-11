@@ -19,5 +19,5 @@ Function NumbArr(ByVal input_arr As Variant)
         input_arr(i) = input_arr(i) & dict(input_arr(i))
     Next i
     
-    NumberArr = input_arr
+    NumbArr = input_arr
 End Function
