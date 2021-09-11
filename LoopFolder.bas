@@ -14,7 +14,7 @@ Sub Main()
     With Application.FileDialog(msoFileDialogFolderPicker)
         .Title = "Select a location containing the files you want to list."
         .Show
-        
+            
         If .SelectedItems.Count = 0 Then
             Exit Sub
         Else
@@ -22,9 +22,7 @@ Sub Main()
         End If
     End With
 
-    With ActiveSheet.Cells
-        .ClearContents
-    End With
+    ActiveSheet.Cells.ClearContents
     Call RecursiveDir(Directory)
 End Sub
 
@@ -40,6 +38,7 @@ Sub RecursiveDir(ByVal CurrDir As String)
         
     'Get files
     Filename = Dir(CurrDir & "*.*", vbDirectory)
+    i = 2
     Do While Len(Filename) <> 0
         If Left(Filename, 1) <> "." Then 'Current dir
             PathAndName = CurrDir & Filename
@@ -58,12 +57,13 @@ Sub RecursiveDir(ByVal CurrDir As String)
                 
                 'Write to sheet
                 With ActiveSheet
-                    Cells(WorksheetFunction.CountA(Range("A:A")) + 1, 1) = Left(CurrDir, Len(CurrDir) - 1)
-                    Cells(WorksheetFunction.CountA(Range("B:B")) + 1, 2) = Filename
-                    Cells(WorksheetFunction.CountA(Range("C:C")) + 1, 3) = CurrDir & "" & Filename
-                    Cells(WorksheetFunction.CountA(Range("D:D")) + 1, 4) = Filesize
-                    Cells(WorksheetFunction.CountA(Range("E:E")) + 1, 5) = FileDateTime(PathAndName)
+                    .Cells(i, 1) = Left(CurrDir, Len(CurrDir) - 1)
+                    .Cells(i, 2) = Filename
+                    .Cells(i, 3) = CurrDir & "" & Filename
+                    .Cells(i, 4) = Filesize
+                    .Cells(i, 5) = FileDateTime(PathAndName)
                 End With
+                i = i + 1
             End If
         End If
         
