@@ -1,28 +1,21 @@
 Attribute VB_Name = "RegEx"
-Sub RegExString()
+Option Explicit
 
-Dim Filename As String
-Filename = InputBox("Please input Text", "")
-
-Sheet1.Range("A1") = Extract(Filename)
-
+Sub Main()
+    Dim input_str, pattern_str As String
+    
+    input_str = "Edit the Expression & Text"
+    pattern_str = "([A-Z])\w+"
+    Debug.Print ExtractRegEx(input_str, pattern_str)
 End Sub
 
-Function Extract(Filename As String) As String
-
+Function ExtractRegEx(ByVal input_str As String, ByVal partern_str As String) As String
     Dim RegEx As Object
-    Dim Pattern As String
-    
-    Pattern = InputBox("Please input Expression", "")
     
     Set RegEx = CreateObject("VBScript.RegExp")
-    
     With RegEx
-        .Pattern = Pattern 'Change pattern to apply
+        .pattern = partern_str 'Change pattern to apply
         .Global = True
-        If .Test(Filename) Then
-            Extract = CStr(.Execute(Filename)(0))
-        End If
+        If .Test(input_str) Then ExtractRegEx = CStr(.Execute(input_str)(0))
     End With
-    
 End Function
